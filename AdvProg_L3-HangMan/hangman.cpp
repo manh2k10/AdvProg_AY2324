@@ -115,4 +115,52 @@ void updateSecretWord(string& secretWord, const char ch, const string& word)
     Returns:
         void
 ***/
-void updateEnteredCha
+void updateEnteredChars(const char ch, string& chars){
+    // TODO: append the character ch is in end of the text chars
+    chars = chars + ch + ' ';
+}
+
+/***
+    Args:
+        incorrectGuess (int): a number that store the number of player's wrong guess
+    Returns:
+        void
+***/
+void updateIncorrectGuess(int& incorrectGuess){
+    // TODO: increase the value of incorrectGuess by 1
+    incorrectGuess++;
+}
+
+/***
+    Args:
+        ch (char): a character that player enter to console
+        word (string): answer word that play needs to guess
+        secretWord (string): answer word in hidden form
+        correctChars (string): a string that stores correct inputs of player
+        incorrectGuess (int): a number that stores the number of player's wrong guess
+        incorrectChars (string): a string that stores incorrect inputs of player
+    Returns:
+        void
+***/
+void processData(const char ch, const string& word,
+                string& secretWord,
+                string& correctChars,
+                int& incorrectGuess, string& incorrectChars)
+{
+    /*** TODO
+        If ch in word:
+            update secretWord: call updateSecretWord() function
+            update correctChars: call updateEnteredChars() function
+        else:
+            update incorrectGuess: call updateIncorrectGuess() function
+            update incorrectChars: call updateEnteredChars() function
+    ***/
+    if(isCharInWord(ch,word)){
+        updateSecretWord(secretWord,ch,word);
+        updateEnteredChars(ch,correctChars);
+    }
+    else{
+        updateIncorrectGuess(incorrectGuess);
+        updateEnteredChars(ch,incorrectChars);
+    }
+}
